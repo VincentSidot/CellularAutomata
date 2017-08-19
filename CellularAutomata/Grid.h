@@ -1,4 +1,4 @@
-#include "FastMatrix.hpp"
+#include "FastMatrix.h"
 #include "Cell.h"
 #include "Config.h"
 

@@ -1,6 +1,6 @@
 #include <iostream>
 #include <Windows.h>
-#include "FastMatrix.hpp"
+#include "FastMatrix.h"
 
 
 int main(int argc, char** argv)

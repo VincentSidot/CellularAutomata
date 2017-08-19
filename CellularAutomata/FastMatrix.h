@@ -2,7 +2,7 @@
 #include <vector>
 #include <initializer_list>
 #include <cassert>
-#include "FastCopy.hpp"
+#include "FastCopy.h"
 
 #pragma once
 template<class T>

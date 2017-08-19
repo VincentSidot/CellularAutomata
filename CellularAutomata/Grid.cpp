@@ -7,7 +7,8 @@ Grid::Grid(Config config) : _config{ config }, _grid{config.grid().x/config.cell
 	{
 		for (size_t j = 0; j < _grid.col(); j++)
 		{
-			_grid(i, j) = Cell(i, j, _config, false);
+			auto temp = _grid(i, j);
+			temp.set(Cell(i, j, config, false));
 		}
 	}
 }

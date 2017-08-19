@@ -22,8 +22,8 @@
     <ClInclude Include="Application.h" />
     <ClInclude Include="Cell.h" />
     <ClInclude Include="Config.h" />
-    <ClInclude Include="FastCopy.hpp" />
-    <ClInclude Include="FastMatrix.hpp" />
+    <ClInclude Include="FastCopy.h" />
+    <ClInclude Include="FastMatrix.h" />
     <ClInclude Include="Grid.h" />
   </ItemGroup>
   <ItemGroup>
