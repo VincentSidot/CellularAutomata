@@ -16,7 +16,7 @@ public:
 	FastMatrix(size_t row, size_t col, T defval) : _row{ row }, _col{ col }
 	{
 		_data = new T[row*col];
-		for (int i = 0; i < (row*col); i++)
+		for (size_t i = 0; i < (row*col); i++)
 			_data[i] = defval;
 	}
 	FastMatrix(FastMatrix<T> const &oth) : _row{ oth.row() }, _col{ oth.col() }
@@ -58,7 +58,12 @@ public:
 		if (this->size() == m.size())
 			FastCopy::threadMemCpy(m.data(), _data, this->size() * sizeof(T));
 	}
-	inline T& operator()(size_t, size_t)
+	inline T& operator()(size_t i, size_t j)
+	{
+		assert(i*j <= _row*_col);
+		return *(_data + i + _col * j);
+	}
+	inline const T& operator()(size_t i, size_t j) const
 	{
 		assert(i*j <= _row*_col);
 		return *(_data + i + _col * j);
@@ -69,7 +74,7 @@ public:
 		this->Fill(m);
 		return *this;
 	}
-	inline T at(size_t i, size_t j)
+	inline T at(size_t i, size_t j) const
 	{
 		assert(i*j <= _row*_col);
 		return *(_data + i + _col * j);
@@ -77,7 +82,7 @@ public:
 	inline void set(size_t i, size_t j, T val)
 	{
 		assert(i*j <= _row*_col);
-		_data[i + _col * j] = val;
+		*(_data + i + _col * j) = val;
 	}
 	inline size_t size() const { return _row*_col; }
 	inline void reset()

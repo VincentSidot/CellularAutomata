@@ -14,7 +14,7 @@ Grid::Grid(Config config) : _config{ config }, _grid{config.grid().x/config.cell
 
 inline bool Grid::isAlive(size_t i, size_t j) const
 {
-	_grid.at(i, j).isAlive();
+	_grid(i, j).isAlive();
 }
 
 Grid::~Grid()

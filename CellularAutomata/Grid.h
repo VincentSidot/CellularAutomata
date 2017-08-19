@@ -1,6 +1,6 @@
+#include "FastMatrix.hpp"
 #include "Cell.h"
 #include "Config.h"
-#include "FastMatrix.hpp"
 
 #pragma once
 class Grid

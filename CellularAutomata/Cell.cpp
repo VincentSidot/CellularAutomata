@@ -14,3 +14,12 @@ inline Cell& Cell::operator=(const Cell & g)
 Cell::~Cell()
 {
 }
+
+inline void Cell::set(const Cell & c)
+{
+	this->_alive = c.isAlive();
+	this->_config = c.config();
+	this->_vertex = c.vertex();
+	this->_i = c.pos().x;
+	this->_j = c.pos().y;
+}

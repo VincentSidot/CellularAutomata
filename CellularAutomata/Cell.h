@@ -14,6 +14,7 @@ class Cell :
 	public sf::Drawable
 {
 public:
+	Cell(){}
 	Cell(size_t i, size_t j,Config config,bool alive = false) : _i{ i }, _j{ j }, _config{ config },_vertex{sf::PrimitiveType::Quads,4},_alive{alive}
 	{
 //disabling warning because converting size_t to float
@@ -36,6 +37,7 @@ public:
 		vc(3) = _color;
 #pragma warning( pop ) 
 	}
+	~Cell();
 	inline Cell& operator=(const Cell &g);
 	inline bool isAlive() const { return _alive; }
 	inline void setAlive(bool alive) 
@@ -54,7 +56,7 @@ public:
 	}
 	inline Config config() const { return _config; }
 	inline sf::VertexArray vertex() const { return _vertex; }
-	~Cell();
+	inline void set(const Cell &c);
 	virtual void draw(sf::RenderTarget& target, sf::RenderStates states) const
 	{
 		target.draw(_vertex, states);
