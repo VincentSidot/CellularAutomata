@@ -1,10 +1,10 @@
+#pragma once
 #include <Windows.h>
 #include <vector>
 #include <initializer_list>
 #include <cassert>
 #include "FastCopy.h"
 
-#pragma once
 template<class T>
 class FastMatrix
 {
@@ -108,7 +108,7 @@ public:
 		FastCopy::threadMemCpy(othr.data(), _data, _col*_row * sizeof(T));
 		return;
 	}
-private:
+protected:
 	size_t _row, _col;
 	T* _data;
 };

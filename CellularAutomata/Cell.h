@@ -1,3 +1,4 @@
+#pragma once
 #include "SFML\Graphics.hpp"
 #include "Config.h"
 
@@ -9,7 +10,6 @@
 #define _x _config.cell().x
 #define _y _config.cell().y
 
-#pragma once
 class Cell :
 	public sf::Drawable
 {
@@ -38,7 +38,7 @@ public:
 #pragma warning( pop ) 
 	}
 	~Cell();
-	inline Cell& operator=(const Cell &g);
+	Cell& operator=(const Cell &g);
 	inline bool isAlive() const { return _alive; }
 	inline void setAlive(bool alive) 
 	{
@@ -56,16 +56,24 @@ public:
 	}
 	inline Config config() const { return _config; }
 	inline sf::VertexArray vertex() const { return _vertex; }
-	inline void set(const Cell &c);
-	inline void set(const Config &config, const vector &pos, const bool alive = false);
+	void set(const Cell &c);
+	void set(const Config &config, const vector &pos, const bool alive = false);
 
 	virtual void draw(sf::RenderTarget& target, sf::RenderStates states) const
 	{
 		target.draw(_vertex, states);
 	}
-private:
+protected:
 	sf::VertexArray _vertex;
 	Config _config;
 	bool _alive;
 	size_t _i, _j;
 };
+
+
+#undef vx
+#undef vy
+#undef vc
+#undef _x
+#undef _y
+#undef _color

@@ -1,7 +1,14 @@
 #include "Cell.h"
 
+#define _color (_alive)?_config.alive():_config.dead()
 
-inline Cell& Cell::operator=(const Cell & g)
+#define vx(i) _vertex[i].position.x
+#define vy(i) _vertex[i].position.y
+#define vc(i) _vertex[i].color
+#define _x _config.cell().x
+#define _y _config.cell().y
+
+Cell& Cell::operator=(const Cell & g)
 {
 	this->_alive = g.isAlive();
 	this->_config = g.config();
@@ -15,7 +22,7 @@ Cell::~Cell()
 {
 }
 
-inline void Cell::set(const Cell & c)
+void Cell::set(const Cell & c)
 {
 	this->_alive = c.isAlive();
 	this->_config = c.config();
@@ -24,11 +31,11 @@ inline void Cell::set(const Cell & c)
 	this->_j = c.pos().y;
 }
 
-inline void Cell::set(const Config & config, const vector & pos, const bool alive)
+void Cell::set(const Config & config, const vector & pos, const bool alive)
 {
 	this->_i = pos.x;
 	this->_j = pos.y;
-	this->_config = config;
+	this->_config.operator=(config);
 	this->_alive = alive;
 #pragma warning( push )
 #pragma warning( disable : 4244)
@@ -49,3 +56,11 @@ inline void Cell::set(const Config & config, const vector & pos, const bool aliv
 	vc(3) = _color;
 #pragma warning( pop ) 
 }
+
+#undef vx
+#undef vy
+#undef vc
+#undef _x
+#undef _y
+#undef _color
+
